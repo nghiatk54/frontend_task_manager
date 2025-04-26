@@ -1,8 +1,46 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Login from "@pages/Auth/Login";
+import SignUp from "@pages/Auth/SignUp";
+import Dashboard from "@pages/Admin/Dashboard";
+import ManageTask from "@/pages/Admin/ManageTask";
+import CreateTask from "@/pages/Admin/CreateTask";
+import ManageUser from "@/pages/Admin/ManageUser";
+import UserDashboard from "@pages/User/UserDashboard";
+import MyTask from "@/pages/User/MyTask";
+import ViewTaskDetail from "@/pages/User/ViewTaskDetail";
+import PrivateRoute from "@/routes/PrivateRoute";
+import { UserProvider } from "@/contexts/userContext";
+import Root from "@pages/Auth/Root";
 function App() {
   return (
-    <div>
-      <h1 className="text-3xl font-bold underline">Task Manager 123</h1>
-    </div>
+    <UserProvider>
+      <div>
+        <Router>
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/signUp" element={<SignUp />} />
+            {/* Admin Routes */}
+            <Route element={<PrivateRoute allowedRoles={["admin"]} />}>
+              <Route path="/admin/dashboard" element={<Dashboard />} />
+              <Route path="/admin/task" element={<ManageTask />} />
+              <Route path="/admin/create-task" element={<CreateTask />} />
+              <Route path="/admin/user" element={<ManageUser />} />
+            </Route>
+            {/* User Routes */}
+            <Route element={<PrivateRoute allowedRoles={["member"]} />}>
+              <Route path="/user/dashboard" element={<UserDashboard />} />
+              <Route path="/user/task" element={<MyTask />} />
+              <Route
+                path="/user/task-detail/:id"
+                element={<ViewTaskDetail />}
+              />
+            </Route>
+            {/* Default Route */}
+            <Route path="/" element={<Root />} />
+          </Routes>
+        </Router>
+      </div>
+    </UserProvider>
   );
 }
 
