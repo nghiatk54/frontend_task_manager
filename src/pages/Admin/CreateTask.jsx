@@ -151,7 +151,7 @@ function CreateTask() {
       if (response.data) {
         const taskInfo = response.data;
         setCurrentTask(taskInfo);
-        setTaskData((prev) => ({
+        setTaskData(() => ({
           title: taskInfo.title,
           description: taskInfo.description,
           priority: taskInfo.priority,
