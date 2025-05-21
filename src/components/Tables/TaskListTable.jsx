@@ -1,4 +1,5 @@
 import moment from "moment";
+import { priorityMap, statusMap } from "../../utils/mapData";
 
 function TaskListTable({ tableData }) {
   const getStatusBadgeColor = (status) => {
@@ -56,7 +57,7 @@ function TaskListTable({ tableData }) {
                     task.status
                   )}`}
                 >
-                  {task.status}
+                  {statusMap[task.status]}
                 </span>
               </td>
               <td className="p-4">
@@ -65,7 +66,7 @@ function TaskListTable({ tableData }) {
                     task.priority
                   )}`}
                 >
-                  {task.priority}
+                  {priorityMap[task.priority]}
                 </span>
               </td>
               <td className="p-4 text-gray-700 text-nowrap text-[13px] hidden md:table-cell">

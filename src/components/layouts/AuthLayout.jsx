@@ -1,4 +1,4 @@
-import UI_IMG from "@images/authImage.jpg";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 function AuthLayout({ children }) {
   return (
@@ -8,7 +8,11 @@ function AuthLayout({ children }) {
         {children}
       </div>
       <div className="hidden md:flex w-[40vw] h-screen items-center justify-center bg-blue-50 bg-[url('@images/bgImage.jpg')] bg-cover bg-no-repeat bg-center overflow-hidden p-8">
-        <img src={UI_IMG} alt="authImage" className="w-64 lg:w-[90%]" />
+        <DotLottieReact
+          src="https://lottie.host/802c71b3-d04f-45b8-8199-057a2416fc2a/Esuh1XDh7Y.lottie"
+          loop
+          autoplay
+        />
       </div>
     </div>
   );
