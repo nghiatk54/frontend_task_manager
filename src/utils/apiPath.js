@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:8001";
+const BASE_URL = "http://34.143.146.38";
 
 const API_PATHS = {
   AUTH: {
